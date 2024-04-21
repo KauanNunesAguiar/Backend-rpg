@@ -16,6 +16,10 @@ import java.util.Map;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController
 @RequestMapping("/personagem")
@@ -36,18 +40,7 @@ public class PersonagemController {
         listaDePersonagens.add(personagem);
         return ResponseEntity.ok(personagem);
     }
-
-    @GetMapping("/deletar/id:{id}")
-    public ResponseEntity<String> deletarPersonagem(@PathVariable Long id) {
-        for (Personagem personagem : listaDePersonagens) {
-            if (personagem.getId().equals(id)) {
-                listaDePersonagens.remove(personagem);
-                return ResponseEntity.ok("Personagem deletado");
-            }
-        }
-        return ResponseEntity.ok("Personagem não encontrado");
-    }
-
+    
     @GetMapping("/procurar/id:{id}")
     public Personagem getPersonagem(@PathVariable Long id) {
         for (Personagem personagem : listaDePersonagens) {
@@ -65,11 +58,9 @@ public class PersonagemController {
     }
 
     public int rolarDado(String notacao) {
-        // Fazendo solicitação à API de rolagem de dados
         String apiUrl = ROLL_API_URL + notacao;
         ResponseEntity<String> resposta = restTemplate.getForEntity(apiUrl, String.class);
 
-        // Processando resposta da API
         if (resposta.getStatusCode() == HttpStatus.OK) {
             try {
                 ObjectMapper mapper = new ObjectMapper();
