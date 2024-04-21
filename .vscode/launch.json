@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-CharactercreationApplication<charactercreation>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.rpgded.charactercreation.CharactercreationApplication",
+            "projectName": "charactercreation",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
