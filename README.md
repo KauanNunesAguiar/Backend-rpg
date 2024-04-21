@@ -1,4 +1,4 @@
-# Caracterização de Personagens RPG
+# Criação de Personagens para RPG
 
 Este projeto consiste em um sistema de criação e gerenciamento de personagens para jogos de RPG (Role-Playing Game) desenvolvido em Java com o framework Spring Boot.
 
