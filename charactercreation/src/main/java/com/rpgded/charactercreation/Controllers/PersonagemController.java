@@ -17,8 +17,10 @@ import java.util.Map;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 @RestController
@@ -32,8 +34,15 @@ public class PersonagemController {
     private PersonagemService personagemService;
     private ArrayList<Personagem> listaDePersonagens = new ArrayList<>();
 
-    @GetMapping("/criar")
-    public ResponseEntity<Personagem> criarPersonagem(@RequestParam String nome, @RequestParam(required = false) Long hp) {
+    @PostMapping("/criar")
+    public ResponseEntity<String> criarPersonagem(@RequestBody PersonagemRequest request) {
+        Personagem personagem = personagemService.criarPersonagem(request);
+        listaDePersonagens.add(personagem);
+        return ResponseEntity.ok("Personagem " + personagem.getNome() + " criado com sucesso. ID: " + personagem.getId());
+    }
+
+    @GetMapping("/criar/nome:{nome}")
+    public ResponseEntity<Personagem> criarPersonagem(@PathVariable String nome, @RequestParam(required = false) Long hp) {
         if(hp == null) hp = 10L;
         PersonagemRequest request = new PersonagemRequest(nome, hp);
         Personagem personagem = personagemService.criarPersonagem(request);

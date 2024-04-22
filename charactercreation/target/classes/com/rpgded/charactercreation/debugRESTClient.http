@@ -1,0 +1,7 @@
+POST http://127.0.0.1:8080/personagem/criar
+Content-Type: application/json
+
+{
+  "nome": "Michel Almeida",
+  "hpMax": 23
+}
