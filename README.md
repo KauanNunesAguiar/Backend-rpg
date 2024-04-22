@@ -11,12 +11,13 @@ Este projeto consiste em um sistema de criação e gerenciamento de personagens 
 
 ## Endpoints Disponíveis
 
-- **/personagem/criar**: era para ser POST, mas só funciona em GET (não sei o porquê) para criar um novo personagem.
+- **/personagem/criar**: POST para criar um novo personagem.
+- **/personagem/criar/nome:{nome}**: GET para criar um novo personagem, com hp opcional.
 - **/personagem/procurar/id:{id}**: GET para buscar um personagem por ID.
 - **/personagem/procurar/nome:{nome}**: GET para buscar um personagem por nome.
 - **/personagem/rolar/{notacao}**: GET para rolar dados usando uma notação específica.
 - **/personagem/ação/**: GET para realizar ações em um personagem, como curar ou causar dano.
-- **/personagem/listar**: GET para listar todos os personagens criados.
+- **/personagem/listar**: GET para listar todos os personagens criados (ID: Nome).
 - **/personagem/ajuda**: GET para adiquir nome do programador e do projeto.
 
 ## Estrutura do Projeto
